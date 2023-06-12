@@ -18,14 +18,19 @@ echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
 sudo apt-get update
 sudo apt-get install jenkins
 sudo systemctl status jenkins
+sudo passwd ubuntu
+sudo nano /etc/ssh/sshd_config
+sudo systemctl restart sshd
 sudo systemctl enable jenkins
 sudo systemctl start jenkins
+sudo usermod -aG jenkins $USER
+
 
 **Docker and Docker-compose**
 sudo apt install docker.io
 sudo apt install docker-compose
-sudo usermod -aG docker $USER
 sudo usermod -aG docker jenkins
+sudo usermod -aG docker $USER
 sudo reboot
 docker ps
 
